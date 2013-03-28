@@ -1,0 +1,208 @@
+/**
+ * 新首页公共类
+ * added by majun 2013-01-08
+ */
+
+/* global */
+body{
+	background: #e1e1e3;
+}
+
+.ata-g-wrap{
+	width: 1060px;
+	margin: 0 auto;
+}
+
+
+.ata-g-content{
+	width: 1060px;
+	padding: 20px;
+	background: #fff;	
+}
+
+.inline{ 
+	display:inline-block;
+	vertical-align:top;
+	*zoom:1;
+	*display:inline;
+}
+
+.clear {
+	zoom:1; /* for IE6 IE7 */  
+}
+
+.clear:after {
+	visibility:hidden;
+	display:block;
+	font-size:0;
+	content:" ";
+	clear:both;
+	height:0;
+}
+
+.fl{
+	float:left;
+}
+
+.fr{
+	float: right;
+}
+
+.ellipsis{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.ml-5{ margin-left: 5px; }
+.pd-0{ padding: 0px; }
+.pd-5{ padding: 5px; }
+.pd-10{ padding: 10px; }
+.pd-15{ padding: 15px; }
+.pd-20{ padding: 20px; }
+.pb-5{ padding-bottom: 5px; }
+.pb-10{ padding-bottom: 10px; }
+.pb-15{ padding-bottom: 15px; }
+.pl-0{ padding-left: 0px!important; }
+.pl-5{ padding-left: 5px!important; }
+.pl-20{ padding-left: 20px!important; }
+.pl-30{ padding-left: 30px!important; }
+.pr-0{ padding-right: 0px!important; }
+.pr-5{ padding-right: 5px!important; }
+.pr-10{ padding-right: 10px!important; }
+.pr-20{ padding-right: 20px!important; }
+.pr-30{ padding-right: 30px!important; }
+
+.lighten{
+	color: #f97e17;
+}
+
+.ft-dark{
+	color: #666;
+}
+
+.underline-dashed{
+	border-bottom: 1px dashed #ccc;
+}
+
+
+
+.ata-nav-login{
+	padding: 0 5px;
+}
+
+.ata-nav-login a{
+	padding:15px 5px 15px 5px!important;
+}
+
+.ata-nav-login-list{
+	display: none;
+}
+
+.ata-nav-login-list.hover{
+	display: inline-block;
+}
+
+.ata-nav-login-list dt{
+	background: #fff;
+}
+
+.ata-nav-login-list dt a{
+	color:#ff9217!important;
+}
+
+.ata-nav-login-list dt i.ata-icon-user{
+	background: url(http://img04.taobaocdn.com/tps/i4/T1kz32XfxeXXXacoHh-49-67.png) 0 0!important;
+}
+
+.ata-nav-login-list{
+	position: absolute;
+	background: #fff;
+	width: 100px;
+	margin: -50px -5px;
+
+}
+
+.ata-nav-login-list dd p{
+	margin: 0;
+}
+
+.ata-nav-login-list dd i,
+i.ata-icon-profile,i.ata-icon-edit{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin: 0 0.5em -3px 0;
+}
+
+i.ata-icon-profile{
+	background: url(http://img04.taobaocdn.com/tps/i4/T1kz32XfxeXXXacoHh-49-67.png) no-repeat -26px -54px!important;
+}
+
+i.ata-icon-edit{
+	background: url(http://img04.taobaocdn.com/tps/i4/T1kz32XfxeXXXacoHh-49-67.png) no-repeat 0px -54px!important;
+}
+
+.ata-nav-login-list dd hr{
+	margin: 4px 0;
+	border-top: 1px dashed #ccc;
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+.ata-nav-login-list dd a{
+	color: #666!important;
+	margin: 0!important;
+	padding: 0!important;
+}
+
+.ata-nav-login-list dd a:hover{color: #ff9217;}
+
+.ata-nav-login-list dt{
+	position: absolute;
+	background: #fff;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	z-index: 999;
+	padding: 0 5px;
+	cursor: pointer;
+}
+
+.ata-nav-login-list dd{
+	position: absolute;
+	width: 110px;
+	background: #fff;
+	border: 1px solid #ccc;
+	z-index: 998;
+	margin: 50px 0 0 -42px;
+	padding: 5px 15px;
+}
+
+.ata-icon-mail{
+	display: inline-block;
+	width: 23px;
+	height: 19px;
+	background: url(http://img04.taobaocdn.com/tps/i4/T1kz32XfxeXXXacoHh-49-67.png) no-repeat 0px -24px!important;
+}
+
+.ata-icon-mail.have{
+	display: inline-block;
+	width: 23px;
+	height: 19px;
+	background: url(http://img04.taobaocdn.com/tps/i4/T1kz32XfxeXXXacoHh-49-67.png) no-repeat -26px -24px!important;
+}
+
+.ata-title-box{
+	border-top: 0;
+	border-bottom: 1px solid #ccc;
+	margin: 15px 0;
+}
+
+.ata-footer{
+	text-align: center;
+	padding-left: 0;
+	padding-right: 0;
+	width: 1060px;
+}

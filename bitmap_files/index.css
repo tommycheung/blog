@@ -1,0 +1,75 @@
+.index-rank dt{
+	border-bottom: 1px solid #ddd;
+}
+
+.index-rank ul{
+	margin-bottom: -1px;
+}
+
+.index-rank dt{
+	margin-bottom: 10px;
+}
+
+.index-rank dd{
+	overflow: hidden;
+}
+
+.index-rank-list .rank-index{
+	width: 10px;
+	text-align: left;
+	color: #999;
+}
+
+
+.nav-tabs .active a{
+	color: #f97e17;
+}
+
+.nav-tabs a{
+	color: #000;
+	font-weight: normal;
+}
+
+.nav-tabs > li > a {
+	line-height: 13px;
+}
+
+/* 轮播插件相关CSS */
+.slides_container {
+	width:780px;
+	display:none;
+}
+
+.slides_container div {
+	width:780px;
+	height:165px;
+	display:block;
+}
+
+.ata-sliders-pagination {
+	width: 780px;
+	display: inline-block;
+	list-style:none;
+	padding:5px 0 10px 0;
+	margin: 0;
+	text-align: center;
+	background: url(http://img01.taobaocdn.com/tps/i1/T1X6cQXXNgXXcriD.0-799-19.png) 0 0 no-repeat;
+}
+
+.ata-sliders-pagination li{
+	display: inline-block;
+}
+
+.ata-sliders-pagination li a{
+	display: block;
+	background-color: #a7a7a7;
+	width: 10px;
+	height: 10px;
+	font-size: 0;
+	margin: 0 4px;
+	border-radius: 50% 50% 50% 50%;
+}
+
+.ata-sliders-pagination .current a {
+	background-color: #f26f15;
+}

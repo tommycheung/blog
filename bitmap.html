@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.atatech.org/article/detail/6644/0 -->
+<html class="ks-webkit537 ks-webkit ks-chrome25 ks-chrome"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script src="./bitmap_files/saved_resource" async="" charset="utf-8"></script><script src="./bitmap_files/saved_resource(1)" async="" charset="utf-8"></script><script src="./bitmap_files/saved_resource(2)" async="" charset="utf-8"></script>
+
+<title>android中如何处理图片（一）-文章详情</title>
+
+<!--
+<script src="/js/jquery.min.js?v=20130321"></script>
+-->
+<script type="text/javascript" async="" src="./bitmap_files/feedback.plug.js"></script><script src="./bitmap_files/jquery-1.8.3.min.js"></script>
+<script src="./bitmap_files/comment.js"></script>
+<script src="./bitmap_files/selector.js"></script>
+<script type="text/javascript" src="./bitmap_files/bootstrap.js"></script>
+<script type="text/javascript">
+
+ $(document).ready(function(){
+
+    /**
+     * 头部导航条下拉列表效果
+     * added by majun 2013-01-18
+     */
+    $('.J_header_tab').hover(
+        function(){
+            $(this).find('.J_btn').addClass('hover');
+            $(this).find('.hd-tab-sub').addClass('hover');
+        }, 
+        function(){
+            $(this).find('.J_btn').removeClass('hover');
+            $(this).find('.hd-tab-sub').removeClass('hover');
+        }
+    );
+
+    /** 
+     * 用户信息下拉列表效果
+     * added by majun 2013-01-18
+     */
+    $('.J_login_tab').hover(
+        function(){
+            $(this).find('.ata-nav-login-list').addClass('hover');
+        }, 
+        function(){
+            $(this).find('.ata-nav-login-list').removeClass('hover');
+        }
+    );
+
+    $('.carousel').carousel({
+        interval: 3000
+    });
+
+ });
+</script>
+
+<link rel="stylesheet" type="text/css" href="./bitmap_files/bootstrap.css">
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <style>
+    .search-button {
+        margin-bottom: 11px;
+    }
+  </style>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="./bitmap_files/public_new.css">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.atatech.org/favicon.ico?v=20130321">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/head.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/common.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/index.css">
+
+</head>
+<body style="background: #e1e1e3;">
+
+<!-- 头部开始 -->
+<div class="ata-header">
+    <div class="ata-g-wrap">
+        <div class="ata-header-navbar">
+            <div class="">
+                <ul class="ata-nav-list inline no-style-list fl">
+                    <li><a href="http://www.atatech.org/square" class="pl-5 pr-10"><img src="./bitmap_files/ATAlogo_20130321.png"></a></li>
+                    <li class="J_header_tab myata"><a class="J_btn" href="http://www.atatech.org/myata/all">我的ATA</a></li>
+                    <li class="J_header_tab groups">
+                        <a href="http://www.atatech.org/group/0" class="J_btn">技术圈<b class="caret"></b></a>
+                        <!-- 鼠标悬浮层 -->
+                                    <div></div>
+                        <dl class="hd-tab-sub">
+                        <dd class="groups">
+                            <div>
+                                <a class="link ft-black" href="http://www.atatech.org/group/0">所有圈子</a>
+                            </div>
+                            <hr>
+                            <div>
+                                <span class="ft-12 ft-black" style="margin: 0 5px 0 5px;">我的圈子:</span><br>
+                                <i class=""><img style="width:18px;height:18px" src="./bitmap_files/u_avatar_20120719114232_group_26_32.png"></i><a href="http://www.atatech.org/gprofile/26" title="Ruby交流圈">Ruby交流圈</a><i class=""><img style="width:18px;height:18px" src="./bitmap_files/u_avatar_20120815132046_group_97_32.jpeg"></i><a href="http://www.atatech.org/gprofile/97" title="jvm交流答疑">jvm交流答疑</a><i class=""><img style="width:18px;height:18px" src="./bitmap_files/u_avatar_20120731131819_group_118_32.jpeg"></i><a href="http://www.atatech.org/gprofile/118" title="乐在项目管理">乐在项目管...</a><i class=""><img style="width:18px;height:18px" src="./bitmap_files/u_avatar_20120831130113_group_122_32.jpeg"></i><a href="http://www.atatech.org/gprofile/122" title="HackInMobile">HackInM...</a><i class=""><img style="width:18px;height:18px" src="./bitmap_files/group_default_avatar_32.jpg"></i><a href="http://www.atatech.org/gprofile/367" title="高性能网站设计">高性能网站...</a>                            </div>
+                        </dd>
+                    </dl>
+                                        </li>
+                    <li class="J_header_tab square"><a href="http://www.atatech.org/square" class="J_btn">社区广场<b class="caret"></b></a>
+                        <div></div>
+            <dl class="hd-tab-sub">
+                            <dd style="width: 78px">
+                                <i class="article_gray_ico">&nbsp;</i><a style="font-size: 16px !important;width:40px" href="http://www.atatech.org/article/list/0">文  章</a>
+                                <hr>
+                                <i class="qa_gray_ico">&nbsp;</i><a style="font-size: 16px !important;width:40px" href="http://www.atatech.org/qa/list/0">问  答</a>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+                <ul class="ata-nav-list inline no-style-list fr">
+                    <li>
+                        <div class="form-search mt-10">
+                            <form action="http://www.atatech.org/search" method="get">
+                                <input type="hidden" name="type" value="">
+                                <input type="text" class="input-medium search-query" style="margin-bottom: 8px" name="keyword" value=""> 
+                                <input class="search-button hide" type="submit" value="">
+                            </form>
+                        </div>
+                   
+                    </li>
+                    <li>&nbsp;&nbsp;&nbsp;</li>
+            
+                    <li class="J_login_tab myname">
+                        <div class="ata-nav-login">
+                            <i class="ata-icon-user"></i><a></a><a href="http://www.atatech.org/profile/18769">延清</a>
+                            <!-- 鼠标悬浮层 -->
+                <div></div>
+                            <dl class="ata-nav-login-list">
+                                <dt><i class="ata-icon-user"></i><a></a><a style="width: 52px;" href="http://www.atatech.org/profile/18769">延清</a></dt>
+                                <dd>
+                                    <p><i class="ata-icon-edit"></i><a href="http://www.atatech.org/myata/manage/setting" class="link">编辑资料</a></p>
+                                    <hr>
+                                    <p><i class="ata-icon-user"></i><a class="link" href="http://www.atatech.org/profile/18769">个人主页</a></p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </li>
+                    <li class="msg">
+                        <a href="http://www.atatech.org/myata/mymessage/reply" class="pr-5">
+                            <!-- <i class="ata-icon-mail have"></i> -->
+                            <i class="ata-icon-mail"></i>
+                        </a>
+                    </li>
+                    <li><a class="pr-5 head_help"><i class="head_help_ico"></i></a></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="linebox hide"><img src="./bitmap_files/linebox.png"></div>
+<div class="slinebox hide"><img src="./bitmap_files/slinebox.png"></div>
+<div class="modal-backdrop fade in hide" style="top:50px"></div>
+<div class="modal-backdrop fade in hide" style="filter: alpha(opacity = 0);opacity:0"></div>
+<div class="mask"></div>
+
+
+<div class="mask p7 hide"><img class="p7-text" src="./bitmap_files/p7-text.png"><img class="p-close fr" src="./bitmap_files/pclose.png"></div>
+
+<div class="mask p1 hide"><img src="./bitmap_files/p1-text.png"><img class="p1-next" src="./bitmap_files/p1-next.png"><div class="p1-next-click click-ie">11</div><img class="p1-close pclose" src="./bitmap_files/p1-close.png"></div>
+
+<div class="mask p2 hide"><img class="p2-line" src="./bitmap_files/p2-line.png"><img class="p2-back" src="./bitmap_files/p2-back.png"><div class="p2-back-click click-ie"></div><img src="./bitmap_files/p2-text.png"><img class="p2-next" src="./bitmap_files/p2-next.png"><div class="p2-next-click click-ie"></div><img class="p2-close pclose" src="./bitmap_files/p1-close.png"></div>
+
+<div class="mask p3 hide"><img class="p3-line" src="./bitmap_files/p3-line.png"><img class="p3-back" src="./bitmap_files/p2-back.png"><div class="p3-back-click click-ie"></div><img src="./bitmap_files/p3-text.png"><img class="p3-next" src="./bitmap_files/p2-next.png"><div class="p3-next-click click-ie"></div><img class="p3-close pclose" src="./bitmap_files/p1-close.png"></div>
+
+<div class="mask p4 hide"><img class="p4-line" src="./bitmap_files/p4-line.png"><img class="p4-back" src="./bitmap_files/p2-back.png"><div class="p4-back-click click-ie"></div><img class="p4-text" src="./bitmap_files/p4-text.png"><img class="p4-next" src="./bitmap_files/p2-next.png"><div class="p4-next-click click-ie"></div><img class="p4-close pclose" src="./bitmap_files/p1-close.png"></div>
+
+<div class="mask p5 hide"><img class="p5-line" src="./bitmap_files/p5-line.png"><img class="p5-back" src="./bitmap_files/p2-back.png"><div class="p5-back-click click-ie"></div><img class="p5-text" src="./bitmap_files/p5-text.png"><img class="p5-next" src="./bitmap_files/p2-next.png"><div class="p5-next-click click-ie"></div><img class="p5-close pclose" src="./bitmap_files/p1-close.png"></div>
+
+<div class="mask p6 hide"><img class="p6-line" src="./bitmap_files/p6-line.png"><img class="p6-back" src="./bitmap_files/p2-back.png"><div class="p6-back-click click-ie"></div><img class="p6-text" src="./bitmap_files/p6-text.png"><img class="p6-next" src="./bitmap_files/p2-next.png"><div class="p6-next-click click-ie"></div><img class="p6-close pclose" src="./bitmap_files/p1-close.png"></div>
+
+
+
+<!-- 内容开始 -->
+<div class="ata-g-wrap ata-g-content">
+<!-- header:end -->
+<script type="text/javascript">
+$(function(){
+    //$(".p2").offset({top:10,left:$(".myata").offset().left+100});
+    var mask = '1';
+    if (!mask) {
+       $("body").css({"overflow":"hidden"});
+       $(".p1").show();
+       $(".modal-backdrop").show();
+       $(".linebox").offset({top:-10,left:$(".myata").offset().left-10})
+    };
+
+    $(".head_help").click(function(){
+       $("body").css({"overflow":"hidden"});
+       $(".p1").show();
+       $(".modal-backdrop").show();
+       $(".linebox").offset({top:-10,left:$(".myata").offset().left-10})
+    });
+    $(".p1-next-click").click(function(){
+        $(".linebox").show();
+        $(".p1").hide();
+        $(".p2").css({left:0});
+        $(".p2").offset({left:$(".myata").offset().left-80});
+        $(".p2").show();
+        $(".linebox").offset({top:-10,left:$(".myata").offset().left-10})
+    });
+
+    $(".p2-next-click").click(function(){
+        $(".linebox").show();
+        $(".p2").hide();
+        $(".p3").css({left:0});
+        $(".p3").offset({left:$(".groups").offset().left-80});
+        $(".p3").show();
+        $(".linebox").offset({top:-10,left:$(".groups").offset().left-10})
+    });
+
+    $(".p3-next-click").click(function(){
+        $(".linebox").show();
+        $(".p3").hide();
+        $(".p4").css({left:0});
+        $(".p4").offset({left:$(".square").offset().left-80});
+        $(".p4").show();
+        $(".linebox").offset({top:-10,left:$(".square").offset().left-10})
+    });
+
+    $(".p4-next-click").click(function(){
+        $(".linebox").hide();
+        $(".slinebox").show();
+        $(".p4").hide();
+        $(".p5").css({left:0});
+        $(".p5").offset({left:$(".myname").offset().left-128});
+        $(".p5").show();
+        $(".slinebox").offset({top:-5,left:$(".myname").offset().left+10})
+    });
+
+    $(".p5-next-click").click(function(){
+        $(".slinebox").show();
+        $(".p5").hide();
+        $(".p6").css({left:0,top:240});
+        $(".p6").offset({top:50,left:$(".msg").offset().left-320});
+        $(".p6").show();
+        $(".slinebox").offset({top:-5,left:$(".msg").offset().left-20})
+    });
+
+    $(".p2-back-click").click(function(){
+        $(".linebox").hide();
+        $(".p2").hide();
+        $(".p1").show();
+    })
+
+    $(".p3-back-click").click(function(){
+        $(".linebox").offset({top:-10,left:$(".myata").offset().left-10})
+        $(".p2").css({left:0});
+        $(".p2").offset({left:$(".myata").offset().left-80});
+        $(".p3").hide();
+        $(".p2").show();
+    })
+
+     $(".p4-back-click").click(function(){
+        $(".linebox").offset({top:-10,left:$(".groups").offset().left-10})
+        $(".p3").css({left:0});
+        $(".p3").offset({left:$(".groups").offset().left-80});
+        $(".p4").hide();
+        $(".p3").show();
+    })
+
+     $(".p5-back-click").click(function(){
+        $(".slinebox").hide();
+        $(".linebox").show();
+        $(".linebox").offset({top:-10,left:$(".square").offset().left-10})
+        $(".p4").css({left:0});
+        $(".p4").offset({left:$(".square").offset().left-80});
+        $(".p5").hide();
+        $(".p4").show();
+    })
+
+     $(".p6-back-click").click(function(){
+        $(".slinebox").offset({top:-5,left:$(".myname").offset().left+10})
+        $(".p5").css({left:0});
+        $(".p5").offset({left:$(".myname").offset().left-128});
+        $(".p6").hide();
+        $(".p5").show();
+    })
+
+    $(".pclose,.p6-next-click").click(function(){
+        $(".slinebox").offset({top:-5,left:$(".head_help").offset().left-20})
+        $(this).parent().hide();
+        $(".p7").show();
+        $(".linebox").hide();
+        $(".slinebox").show();
+    })
+
+    $(".p-close").click(function(){
+        $.post("/common/recordMask",function(){
+            $("body").css({"overflow":"visible"});
+            $(".p7").hide();
+            $(".modal-backdrop").hide();
+            $(".slinebox").hide();
+        })
+    });
+})
+</script>
+<style type="text/css">
+
+</style><link rel="stylesheet" type="text/css" href="./bitmap_files/mark.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/pagination.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/shCoreDefault.css">
+<link href="http://a.tbcdn.cn/s/kissy/1.3.0/editor/theme/cool/editor-min.css?v=20130321" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/detail_new.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/shThemeDefault.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/selector.css">
+<link rel="stylesheet" type="text/css" href="./bitmap_files/flexpaper.css">
+
+<div class="scroll-top" style="display: none;"></div>
+<div class="pob-box" id="pobBox" style="display:none;">
+        <div class="pb-title"><a href="javascript:;" class="pb-close">&nbsp;</a>分享</div>
+
+    <div class="pob-content">
+        <div class="min-content">
+            <form action="http://www.atatech.org/article/refer/6644/122" method="post" class="form-box">
+                        <div><input type="checkbox" name="toGroup" class="selected"><strong class="ft-14">分享到圈子</strong></div>
+            <div><strong>未引用的圈子：</strong>
+                <select class="input-style wid-em100" name="refer_group_id" id="refer_group_id">
+                                        <option value="26">Ruby交流圈</option>
+                                        <option value="97">jvm交流答疑</option>
+                                        <option value="118">乐在项目管理</option>
+                                        <option value="122">HackInMobile</option>
+                                        <option value="367">高性能网站设计</option>
+                                    </select>
+                <div class="mb-5"><strong>标签：</strong>  <div>
+                    <input type="text" name="tags" id="tags" style="width: 360px;height:30px" class="input-style" topic="打上标签能让你文章得到更多的关注哦~">
+                </div></div>
+            </div>
+                        <div><input type="checkbox" name="toPeople" class="selected"><strong class="ft-14">分享给同事</strong></div>
+            <div class="controls">
+                <div class="selector selector-toggle span12 " id="selUser" style="float:right">
+                    <ol class="tokenList">
+                        <li>
+                            <input name="receiverId" type="hidden" value="" friendname="" data-val=""><!-- 接收选中的Id值，name或id请自定义 -->
+                            <input accesskey="s" style="width: 25px;box-shadow:none;outline:none" type="text" autocomplete="off">
+                        </li>
+                    </ol>
+                    <div class="dropWrap">
+                        <div class="popLayer" style="display: none;">
+                            <div class="decor"></div>
+                            <div class="content">
+                                <ul class="dropList"><li class="default"><span>{$tips}</span></li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="help-block ">输入姓名或工号</span>
+            </div>
+        </form>
+    </div>
+    <p class="layerout-box">
+        <span class="fr mt-20 mb-10">
+            <button type="button" okbutton="1" class="btn btn-primary">确 定</button>
+            <button type="button" close="1" class="btn ml-10">取 消</button>
+        </span>
+    </p>
+</div>
+</div>
+
+
+<div class="container mt-20 detail">
+    <div class="row mt-10">
+        <div class="span9">
+            <div class="row-fluid">
+                <div class="span10">&nbsp;<strong class="ft-18">android中如何处理图片（一）            </strong></div>
+            
+            <div class="span2 ft-12 fr" style="text-align: right;">
+
+                           <a class="link" href="http://www.atatech.org/article/modify/6644">[编辑]</a>&nbsp;|&nbsp;<a class="delete link" href="http://www.atatech.org/article/delete/6644/n?t=1">[删除]</a>
+              </div>
+ </div>
+ <div class="row-fluid ft-12 small-title">
+    <span class="ft-gray">作者</span>： <a href="http://www.atatech.org/profile/18769" class="ft-gray link">延清</a>
+    <span class="ft-gray fr">2013-03-26 11:58:59&nbsp;&nbsp;<i class="read-gray-icon" title="阅读数"></i>(6)</span>
+    
+</div>
+<div class="row-fluid detail-content mb-10 ks-editor-post">
+   <p>&nbsp;由于内存的有限，图片对性能优化起到了很大的作用，如何管理图片 以及如何对图片进行加载就需要进行很多处理。本文从以下2个问题来简单介绍下图片处理的思路</p><p>1 如何在listview中a 加载远程图片 b 如何利用viewhold c 回收和reload图片&nbsp;</p><p>2 如何在图片管理中加入本地图片的支持 以及如何处理大尺寸图片</p><p> </p><p>​</p><p style="font-size:14px;line-height:20px;">正文&nbsp;</p> <p style="font-size:14px;line-height:20px;">&nbsp;</p> <h1 style="font-size:14px;line-height:20px;">1 如何在listview中处理图片&nbsp;</h1> <p style="font-size:14px;line-height:20px;">&nbsp; &nbsp;</p> <p style="font-size:14px;line-height:20px;">&nbsp; &nbsp;a 使用异步线程加载url对应的图片</p> <p style="font-size:14px;line-height:20px;">&nbsp; &nbsp; &nbsp; 新建一个类 继承AsyncTask，传入url 根据这个远程的url，在实现类中进行处理</p> <p style="font-size:14px;line-height:20px;">&nbsp;</p> <p style="font-size:14px;line-height:20px;">&nbsp;<img src="./bitmap_files/t_1602287355.jpeg" alt="alt" style="cursor: pointer;"></p> <p style="font-size:14px;line-height:20px;">&nbsp;</p> <p style="font-size:14px;line-height:20px;">一般1中的固定算法都是对当前的url进行md5运算之后取hashcode，有一个地方需要注意，如果服务器支持多种图片存储 比如针对图片m.jpg服务器自动在后台处理成m_100X100.jpg 这种url 那么客户端处理的时候需要根据当前的像素密度和当前的imageView的大小,添加合适的后缀。&nbsp;</p> <p style="font-size:14px;line-height:20px;">&nbsp;</p> <p style="font-size:14px;line-height:20px;">即在算出本地文件之前需要将pic_size加入。url = url+pic_size;其中pic_size主要根据像素密度计算。</p> <p style="font-size:14px;line-height:20px;">&nbsp;</p> <p style="font-size:14px;line-height:20px;"><b style="font-size:14px;">像素密度定义</b></p> <p style="font-size:14px;line-height:20px;">像素密度（pixels per inch），也称PPi，即每英寸屏幕所拥有的像素数，像素密度越大，显示画面细节就越丰富。</p> <p style="font-size:14px;line-height:20px;"><span style="font-size:14px;"><b style="font-size:14px;">计算方法</b></span></p> <p style="font-size:14px;line-height:20px;"><span style="font-size:14px;">像素密度={1+√[(长度像素数-1)^2+(宽度像素数-1)^2]}/屏幕尺寸 而小密度的手机上的ImageView要在大像素密度上展示的区块差不多大小的话就要和缩放因子进行处理</span></p> <p style="font-size:14px;line-height:20px;">&nbsp;</p> <p style="font-size:14px;line-height:20px;">比如你需要在缩放因子为1 &nbsp;即大部分320*480机器上的ImageView 显示在高分辨率如1.5的800*600 &nbsp;可能缩放因子就是1.5 &nbsp;原来100*100dp的图片就需要乘以1.5即150X150的图片 &nbsp;然后根据服务端的支持的分辨率查找一个url 本例子服务端类似的分辨率支持 100X100 160X160 240X240 所以可以使用160x160的图片 即不会显示失真 也不会使用大图片造成更多的内存浪费 类似的代码如下</p> <pre>final float scale=MyApplication.getContext.getResources()
+.getDisplayMetrics(.scaledDensity;
+if(scale==1){
+  return 100X100.jpg
+}else if(scale==1.5){
+  return 160X160.jpg
+}else{
+  return 240X240.jpg
+}</pre> <p style="font-size:14px;line-height:20px;"><span style="font-size:14px;">拿到了分辨率的后缀 就可以通过</span>url = url+pic_size;来组装新的url了 再将新的url去获取md5加密之后的hashcode 做为本地存储的文件名。<span style="color:rgb(204,0,0);">当然其他的算法也是可以的 只要确定相同的url得到的文件名是一样 不一样的文件名（分辨率不同也属于不一样的文件名）得到的结果不会重复就可以。</span></p> <p style="font-size:14px;line-height:20px;">3中将本地的存储文件名和对应的url以及存储的文件三者对应起来了，后续如果再次请求当前的图片而且是当前的分辨率的时候就回直接通过步骤4取本地的文件 不必重新请求网络。不过这样对服务端的要求比较多，最好有存储图片的服务器 服务器后台对上传的图片自动生成若干个分辨率的文件。</p> <p style="font-size:14px;line-height:20px;">如果你的服务端不支持自动生成多个分辨率或者说加载的图片是本地的。为了使用decode方法时不会outofmemory 则需要先进行分辨率的预判，进行缩放之后再进行加载，只加载适合屏幕的内容。将在第2个大问题中说明。</p><p style="font-size:14px;line-height:20px;">&nbsp;</p><p style="font-size:14px;line-height:20px;">部分代码:</p><pre>class ImageAsyncDownloader extends
+			AsyncTask&lt;ImageAsyncParam, Void, ImageAsyncResult&gt; {
+  @Override
+  protected ImageAsyncResult doInBackground(ImageAsyncParam... params) {
+  Log.d(TAG, 'ImageAsyncDownloader.doInBackground's threadId = ' + Thread.currentThread().getId());
+  String url = params[0].url;
+  ImageAsyncResult result = new ImageAsyncResult();
+  result.imageView = params[0].imageView;
+  result.url = url;
+  /** 先从本地方法里面获取 加载通过md5加密之后的文件名 */
+  result.bitmap = getBitmapFromLocalByUrl(url);
+  //如果本地无法加载
+  if (result.bitmap != null)
+    return result;
+  InputStream is =HttpDownloader.requestStreamByUrlNoException(url);
+  //加载远程成功 
+  if (is != null) {
+  //加载到本地目录 文件名=md5之后hashcode
+  FileUtil.saveToDownloadByUrl(url, is);
+  result.bitmap = getBitmapFromLocalByUrl(url);
+  }
+  return result;
+}
+
+  @Override
+  protected void onPostExecute(ImageAsyncResult result) {
+ super.onPostExecute(result);
+//比对当前加载的imageView对应的url是否已经改变 如果没改变加载数据到imageView
+ checkImageViewAlive('ImageAsyncDownloader', result);
+  mUrlAsyncTaskMap.remove(result.url);
+ }
+ }</pre><p style="font-size:14px;line-height:20px;"><span style="font-size:14px;">其中</span></p><p style="font-size:14px;line-height:20px;">&nbsp;</p><p style="font-size:14px;">&nbsp;b 如何重用listview的cell</p> <p style="font-size:14px;">&nbsp; &nbsp;listview加载的时候因为屏幕的显示cell的数量是有限的，所以在界面显示的cell永远不是全部。listView的adaptor要重写getView方法来自定义cell，系统会将使用过的ContentView做为参数返回。重复的加载view来展示cell是最慢的一种方法，正确的做法是当返回的参数中contentView不为空的时候重新当前的view并将当前cell的数据模型绑定到tag里。</p> <p style="font-size:14px;">&nbsp; &nbsp;声明一个ViewHolder类 保存cell中需要展示的数据结构.在getView中先判断给定的参数contentView，如果为空则加载一个新的自定义cell界面，然后将数据存入viewHolder，此viewHolder存在contentView的tag中。如果contgentView不为空则直接重用。重新设置数据，返回给listView. &nbsp; <span style="color:rgb(204,0,0);">ps:因为contentView是复用的，且tag保存的viewHolder是数据的内容，因此重用之前一般要对viewHolder进行初始化，因为你在contentView对内容会进行赋值或者隐藏和显示操作，如果你不初始化viewHolder，可能下次拿到的viewHolder会有不确定的展示效果 比如上一个cell的getView方法将某个控件置不显示View.GONE 下一个重用这个viewHolder的时候可能没有设置，就造成了虽然有 数据但是不展示的问题。所以最好同意在拿到上一次使用过的有状态的ViewHolder的时候先初始化。</span></p><pre>public class MyArrayAdapter extends ArrayAdapter&lt;WeiboInfo&gt; {
+  private ImageView iv;
+    public MyArrayAdapter(Context context, int textViewResourceId, List&lt;WeiboInfo&gt; objects) {
+        super(context, textViewResourceId, objects);
+    }
+    class ViewHolder {
+        //是否是vip用户
+        ImageView vipview;
+        //头像显示
+        ImageView iv;
+        //用户名显示
+        TextView  nameTextView;
+        //正文显示
+        TextView  textTextView;
+        //时间显示 
+        TextView  dateTextView;
+        //重置初始化状态
+        public void init(){
+        ....
+        }
+    }
+   @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (null == convertView) {
+    //如果为空新初始化一个view 
+    convertView =LayoutInflater.from(getContext()).inflate(R.layout.my_simple_list_item,null);
+    //初始化一个viewHolder
+     ViewHolder vh = initVHolder(convertView);
+    convertView.setTag(vh);
+     }
+    //contentView可以复用
+    ViewHolder viewHolder = (ViewHolder) convertView.getTag();
+    //将viewHolder中数据初始化置默认值
+    viewHolder.init();
+    WeiboInfo i = getItem(position);
+    boolean isVip = i.getIsVIP();
+    if (isVip) {
+      viewHolder.vipview.setVisibility(View.VISIBLE);
+     } else {
+      viewHolder.vipview.setVisibility(View.INVISIBLE);
+     }
+    viewHolder.nameTextView.setTextColor(Color.BLUE);
+ viewHolder.nameTextView.setText(Html.fromHtml(i.getName()));
+  //微博内容
+viewHolder.textTextView.setText(Html.fromHtml(i.getTitle()));
+  //发布时间和来源
+  viewHolder.dateTextView.setText(i.getDateString() + '来自:' + i.getFrom());
+  //dateTextView.setText('发布时间:2012-12-30');
+  //从缓存中加载图片对象如果没有的话根据url初始化一个，再缓存起来
+        new AynsImagerGetter().execute(new AynsImagerViewInitModel(viewHolder.iv, i.getName(), i
+            .getHeadURL(), null));
+         return convertView;
+     }
+
+    private ViewHolder initVHolder(View convertView) {
+        ViewHolder vh = new ViewHolder();
+        vh.vipview = (ImageView) convertView.findViewById(R.id.imageViewvip);
+        vh.nameTextView = (TextView) convertView.findViewById(R.id.name);
+        vh.textTextView = (TextView) convertView.findViewById(R.id.text);
+        vh.dateTextView = (TextView) convertView.findViewById(R.id.from);
+        vh.iv = (ImageView) convertView.findViewById(R.id.imageView1);
+        return vh;
+    }
+}</pre><p style="font-size:14px;line-height:20px;">在需要加载远程图片的时候使用自定义的ImageManager类加载图片， 并且缓存对应的数据，在必要的时候回收或者重新从本地加载imageView对应的图片。下面说下回收和重新加载的处理</p><p style="font-size:14px;line-height:20px;">c 如何缓存图片 回收图片和重新加载图片</p><p style="font-size:14px;line-height:20px;">&nbsp; ImageManager做为一个图片处理的类，负责整个异步加载的图片的下载、本地目录存取和异步加载，除此之外还要对图片的回收 onresume时的重新加载 以及圆角处理等功能。下面以一个简单的imageManager需求来写一个简单的示例。</p><p style="font-size:14px;line-height:20px;">&nbsp; 缓存的目的是增加加载速度 避免重复加载。 回收和重新加载的目的是释放内存不会内存溢出。&nbsp;</p><p style="font-size:14px;line-height:20px;">&nbsp; 缓存的策略已经在a里描述了，基本上就是按照一个特定的规律把远程文件url 转换成本地存储的文件名 然后拿这个文件索引本地缓存目录 存在的直接使用 不存在的从服务端下载到本地按照本地存储文件名存储。 其实这样还是会有问题：可能url一样的2个文件代表的文件实际上是两个不同的图片，而本地已经缓存一张的情况下 如果引用另一张也会引用到已经缓存的 比如很多按照上传文件存储在服务端的文件，就要求服务端要对文件名称有一个重新生成的策略，不会两个问题出现同一个名字。 &nbsp;</p><p style="font-size:14px;line-height:20px;">&nbsp; 缓存的数据结构。</p><pre>    //~~~数据结构
+    //线程安全的记录每个avtivity对应一个单独的ImageManager
+    private static Map&lt;String, ImageManager&gt; mActivityImageManagerMap = Collections.synchronizedMap(new HashMap&lt;String, ImageManager&gt;());
+    // 针对每个实例有单独的cache
+    private boolean mIsRecycledOnPuase = false; // 是否在onPause时已回收
+    private String mActivity; // 所在activity
+    //url对应的位图 缓存在jvm加载时重用
+    private ConcurrentHashMap&lt;String, SoftReference&lt;Bitmap&gt;&gt; mBitmapRefCache = new ConcurrentHashMap&lt;String, SoftReference&lt;Bitmap&gt;&gt;();
+    //imageview对应url 用以异步加载图片（异步加载完当前的图片之后主线程判断imageView对应的url是否改变 没改变的情况才加载到对应的imageView中）
+    private ConcurrentHashMap&lt;ImageView, String&gt; mImageViewUrlMap = new ConcurrentHashMap&lt;ImageView, String&gt;();</pre><p>&nbsp; &nbsp; 加载图片和缓存策略:</p><p>&nbsp;对照<span style="font-size:14px;line-height:1.5;">ImageManager 一个示例来看 ps 部分代码可能不是很全 &nbsp;</span></p><pre>public class ImageManager {
+	//~~~数据结构
+	//线程安全的记录每个avtivity对应一个单独的ImageManager
+	private static Map&lt;String, ImageManager&gt; mActivityImageManagerMap = Collections
+			.synchronizedMap(new HashMap&lt;String, ImageManager&gt;());
+    // 针对每个实例有单独的cache
+	private boolean mIsRecycledOnPuase = false; // 是否在onPause时已回收
+	private String mActivity; // 所在activity
+	//url对应的位图 缓存在jvm加载时重用
+	private ConcurrentHashMap&lt;String, SoftReference&lt;Bitmap&gt;&gt; mBitmapRefCache = new ConcurrentHashMap&lt;String, SoftReference&lt;Bitmap&gt;&gt;();
+	//imageview对应url 用以异步加载图片（异步加载完当前的图片之后主线程判断imageView对应的url是否改变 没改变的情况才加载到对应的imageView中）
+	private ConcurrentHashMap&lt;ImageView, String&gt; mImageViewUrlMap = new ConcurrentHashMap&lt;ImageView, String&gt;();
+
+	private ImageManager(String activity) {
+		mActivity = activity;
+	}
+
+	/**
+	 * 获取一个当前activity对应的imageManager的实例
+     **/
+	public static ImageManager getInstance(String activity) {
+	    
+		ImageManager imageManager = mActivityImageManagerMap.get(activity);
+		if (imageManager == null) {
+			imageManager = new ImageManager(activity);
+			mActivityImageManagerMap.put(activity, imageManager);
+		}
+		return imageManager;
+	}
+
+	/**
+	 * 从缓存中获取已经存在的实例，若不存在返回null 在activity的生命周期的onresume会将固定数量之外的activity对应的imageManager对应的图片全部回收
+	 * 并且在自我管理activity的activityManager中新增activity会将固定数量之外（一般是2 or 3）的activity对应的图像全部回收掉
+	 * @param activity
+	 * @return
+	 */
+	public static ImageManager getInstanceFromCache(String activity) {
+		if (StringUtil.isEmpty(activity)) {
+			return null;
+		}
+		return mActivityImageManagerMap.get(activity);
+	}
+
+	/**
+	 * 因为avtivityManager会将当前往前超过一定数量的activity对应的位图回收掉，所以当activity重新进入前台时，恢复指定activity下的所有bitmap图片
+	 */
+	public void reloadBitmapOnResume() {
+		if (!mIsRecycledOnPuase) { // 判断之前是否已回收
+			return;
+		}
+        // 首先对所有ImageView设置默认图片
+		for (Iterator&lt;Map.Entry&lt;ImageView, String&gt;&gt; itr = mImageViewUrlMap
+				.entrySet().iterator(); itr.hasNext();) {
+			Map.Entry&lt;ImageView, String&gt; imageViewUrl = itr.next();
+			final boolean needRound = (Boolean) imageViewUrl.getKey().getTag(
+					TAG_KEY_NEED_ROUND);
+			final int defaultLoading = (Integer) imageViewUrl.getKey().getTag(
+					TAG_KEY_DEFAULT_LOADING);
+			downloadImage(imageViewUrl.getValue(), imageViewUrl.getKey(), null,
+					defaultLoading, needRound);
+		}
+		// 设置为未回收标记位
+		mIsRecycledOnPuase = false;
+	}
+
+	/**
+	 * 当activity进入后台时，回收指定activity下的所有bitmap图片
+	 */
+	public void recycleBitmapOnPause() {
+		if (isRejectRecycle()) {
+			recycleNotUsedBitmap();
+			return;
+		}
+ 
+		// 首先对所有ImageView设置默认图片
+		for (Enumeration&lt;ImageView&gt; enu = mImageViewUrlMap.keys(); enu
+				.hasMoreElements();) {
+			ImageView imageView = enu.nextElement();
+			final int defaultLoading = (Integer) imageView
+					.getTag(TAG_KEY_DEFAULT_LOADING);
+			setViewByResourceId(imageView, defaultLoading, false);
+		}
+		// 回收所有bitmap
+		recycleAllBitmap('OnPause');
+		// 设置为已回收标记位
+		mIsRecycledOnPuase = true;
+	}
+
+	/**
+	 * 页面销毁时回清空对应的imageManager 回收所有没回收的位图
+	 */
+	public void recycleAllBitmapOnDestroy() {
+		recycleAllBitmap('onDestroy');
+		mActivityImageManagerMap.remove(mActivity);
+	}
+
+ 	/**
+	 * 回收指定activity对应的bitmap缓存下的图片
+	 */
+	private void recycleAllBitmap(String from) {
+		int numOfBitmapNullOrRecycled = 0;
+		final String fromLog = 'recycleAllBitmap' + from + ' exec activity='
+				+ mActivity;
+		for (Iterator&lt;SoftReference&lt;Bitmap&gt;&gt; itr = mBitmapRefCache.values()
+				.iterator(); itr.hasNext();) {
+			Bitmap bitmap = itr.next().get();
+			if (bitmap != null &amp;&amp; !bitmap.isRecycled()) {
+				Log.d(TAG, fromLog + ',recycle bitmap=' + bitmap);
+				recycle(bitmap, fromLog);
+				bitmap = null;
+			} else {
+				numOfBitmapNullOrRecycled++;
+			}
+		}
+		Log.i(TAG,
+				fromLog + ', bitmapSoftRefCache.size = '
+						+ mBitmapRefCache.size()
+						+ ', numOfBitmapNullOrRecycled='
+						+ numOfBitmapNullOrRecycled + ',this=' + this);
+	}
+
+	/**
+	 * 回收当前activity对应的无用bitmap缓存下的图片
+	 */
+	private void recycleNotUsedBitmap() {
+		int beforeSize = mBitmapRefCache.size();
+
+		int numOfBitmapNullOrRecycled = 0;
+		for (Iterator&lt;Map.Entry&lt;String, SoftReference&lt;Bitmap&gt;&gt;&gt; itr = mBitmapRefCache
+				.entrySet().iterator(); itr.hasNext();) {
+			Map.Entry&lt;String, SoftReference&lt;Bitmap&gt;&gt; bitmapEntry = itr.next();
+			// 判断当前bitmap对应的url是否还被使用
+			if (!mImageViewUrlMap.containsValue(bitmapEntry.getKey())) {
+				// 不被使用，直接回收
+				Bitmap bitmap = bitmapEntry.getValue().get();
+				if (bitmap != null &amp;&amp; !bitmap.isRecycled()) {
+					Log.d(TAG, 'recycleNotUsedBitmap exec activity='
+							+ mActivity + ',recycle bitmap=' + bitmap);
+					recycle(bitmap, 'recycleNotUsedBitmap');
+					bitmap = null;
+				} else {
+					numOfBitmapNullOrRecycled++;
+				}
+				mBitmapRefCache.remove(bitmapEntry.getKey());
+			}
+		}
+	}
+ 
+	/**
+	 **异步加载图片
+	 **/
+	public void downloadImage(String url, ImageView imageView, String picSize,
+			int loadingResourceId, boolean needRound) {
+		downloadImage(url, imageView, loadingResourceId, -1, picSize, needRound);
+	}
+	/**
+	 **异步加载图片
+	 **/
+	public void downloadImage(String url, ImageView imageView,
+			int loadingResourceId, String picSize) {
+		downloadImage(url, imageView, loadingResourceId, -1, picSize, false);
+	}
+ 
+	public void downloadImage(String url, ImageView imageView,
+			int loadingResourceId, int errorImageResourceId, String picSize,
+			boolean needRound) {
+		// 设置加载的时候的图片 如果没有设置则设置系统默认的
+		if (loadingResourceId == -1) {
+			loadingResourceId = R.drawable.default_loading;
+		}
+
+		if (imageView == null) {
+			return;
+		}
+
+		// 将是否需要圆角,默认加载设置到tag中，便于恢复时使用
+		imageView.setTag(TAG_KEY_NEED_ROUND, Boolean.valueOf(needRound));
+		imageView.setTag(TAG_KEY_DEFAULT_LOADING, loadingResourceId);
+		//如果url错误 设置错误的图标返回
+		if (StringUtil.isBlank(url)) {
+			if (errorImageResourceId == -1) {
+				errorImageResourceId = loadingResourceId;
+			}
+			putImageViewUrlMapping('Cache', imageView, url);
+			setViewByResourceId(imageView, errorImageResourceId, false);
+			return;
+		}
+
+		// 重设url，增加尺寸支持 来自网络的图片才需要增加尺寸
+		if (picSize != null &amp;&amp; !isLocalUrl(url)) {
+			url = url + picSize;
+		}
+
+		// 首先从JVM、本地文件中获取
+		Bitmap bitmap = getBitmapFromCacheByUrl(url, needRound);
+		if (bitmap != null) {
+			putImageViewUrlMapping('Cache', imageView, url);
+			setViewByBitmap(imageView, bitmap, false);
+			return;
+		}                  
+         
+		setViewByResourceId(imageView, loadingResourceId, false);
+
+		// 从网络异步获取
+		putImageViewUrlMapping('Network', imageView, url);
+		try {
+			ImageAsyncDownloader imageAsyncDownloader = new ImageAsyncDownloader();
+			imageAsyncDownloader.execute(new ImageAsyncParam(url, imageView,
+					needRound));
+		} catch (RejectedExecutionException e) {
+			Log.e(TAG, 'imageAsyncDownloader is rejected by ', e);
+		}
+	}
+
+	/**
+	 * 缓存当前activity下的imageView
+	 * 
+	 * @param imageView
+	 * @param url
+	 */
+	private void putImageViewUrlMapping(String from, ImageView imageView,
+			String url) {
+		mImageViewUrlMap.put(imageView, url); 
+	}
+
+	/**
+	 * 从JVM缓存或本地文件缓存中生成bitmap
+	 * 
+	 * @param url
+	 * @param needRound
+	 *            是否需要圆角处理
+	 * @return
+	 */
+	private Bitmap getBitmapFromCacheByUrl(String url, boolean needRound) {
+		// 首先从当前JVM内部cache获取
+		SoftReference&lt;Bitmap&gt; ref = mBitmapRefCache.get(url);
+		if (ref != null) {
+			Bitmap bm = ref.get();
+			if (bm != null &amp;&amp; !bm.isRecycled()) {
+				return bm;
+			} else {
+				mBitmapRefCache.remove(url);
+			}
+		}
+		return null;
+	}
+
+ 
+	/**
+	 * 生成带有圆角的图片
+	 * 
+	 * @param bitmap
+	 * @return
+	 */
+	public Bitmap getRoundedCornerBitmap(Bitmap bitmap) {
+		Bitmap output = null;
+		try {
+			output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(),
+					Config.ARGB_4444);
+		} catch (OutOfMemoryError e) {
+			Log.e(TAG, 'getRoundedCornerBitmap:', e);
+		}
+		if (output == null) {
+			return null;
+		}
+		Canvas canvas = new Canvas(output);
+
+		final int color = 0xff424242;
+		final Paint paint = new Paint();
+		final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+		final RectF rectF = new RectF(rect);
+		final float roundPx = 10;
+
+		paint.setAntiAlias(true);
+		canvas.drawARGB(0, 0, 0, 0);
+		paint.setColor(color);
+		canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+		paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
+		canvas.drawBitmap(bitmap, rect, rect, paint);
+		recycle(bitmap, 'getRoundedCornerBitmap');
+		return output;
+	}
+
+ 
+	private void setViewByResourceId(ImageView imageView,
+			int loadingResourceId, boolean isBackground) {
+		if (loadingResourceId != -1) {
+			if (isBackground) {
+				imageView.setBackgroundResource(loadingResourceId);
+			} else {
+				imageView.setImageResource(loadingResourceId);
+			}
+			imageView.invalidate();
+		}
+	}
+
+	//设置得到的位图到对应的imageView中
+	private void setViewByBitmap(ImageView imageView, Bitmap bm,
+			boolean isBackground) {
+		if (bm != null &amp;&amp; !bm.isRecycled()) {
+			if (isBackground) {
+				imageView.setBackgroundDrawable(new BitmapDrawable(bm));
+			} else {
+				imageView.setImageBitmap(bm);
+			}
+			imageView.invalidate();
+		}  
+	}
+
+	private static void closeInputStream(InputStream is) {
+		try {
+			if (is != null) {
+				is.close();
+			}
+		} catch (IOException e) {
+		}
+	}
+
+	class ImageAsyncParam {
+		String url;
+		ImageView imageView;
+		boolean needRound;
+
+		public ImageAsyncParam(String url, ImageView imageView,
+				boolean needRound) {
+			this.url = url;
+			this.imageView = imageView;
+			this.needRound = needRound;
+		}
+	}
+
+	class ImageAsyncResult {
+		ImageView imageView;
+		Bitmap bitmap;
+		String url;
+	}
+
+	class ImageAsyncDownloader extends
+			TaobanAsyncTask&lt;ImageAsyncParam, Void, ImageAsyncResult&gt; {
+
+		@Override
+		protected ImageAsyncResult doInBackground(ImageAsyncParam... params) {
+         	String url = params[0].url;
+			ImageAsyncResult result = new ImageAsyncResult();
+			result.imageView = params[0].imageView;
+			result.url = url;
+			/** 先从本地方法里面获取 */
+			result.bitmap = getBitmapFromLocalByUrl(url, params[0].needRound);
+			if (result.bitmap != null)
+				return result;
+            //网络加载得到流
+			InputStream is = HttpDownloader.requestStreamByUrlNoException(url);
+			if (is != null) {
+				//decode存到本地目录中
+				FileUtil.saveToLocalFileByUrl(url, is);
+				//再从本地目录读取
+				result.bitmap = getBitmapFromLocalByUrl(url,
+						params[0].needRound);
+			}
+			return result;
+		}
+
+		@Override
+		protected void onFinishExecute(ImageAsyncResult result) {
+		   super.onFinishExecute(result);
+		   //如果获取的位图对应的url 和imagerView当前对应的url是同一个url 则加载到图片 否则说明已经过期的加载 不需要加载 
+			if (result != null &amp;&amp; result.bitmap != null) {
+				String newUrl = mImageViewUrlMap.get(result.imageView);
+				if (result.url.equals(newUrl)) {
+					setViewByBitmap(result.imageView, result.bitmap, false);
+				}  
+			}
+		}
+	}
+    //从本地加载图片
+	private Bitmap getBitmapFromLocalByUrl(String url, boolean needRound) {
+		InputStream is = FileUtil.getInputStreamByUrl(url);
+		if (is != null) {
+			Bitmap bitmap = getBitmapByInputStream(url, is, needRound);
+			return bitmap;
+		}
+		return null;
+	}
+
+	//回收imageView上的位图
+	public static void recycledImageView(ImageView imageView) {
+		Drawable drawable = imageView.getDrawable();
+		if (drawable == null &amp;&amp; !(drawable instanceof BitmapDrawable)) {
+			return;
+		}
+		Bitmap b = ((BitmapDrawable) drawable).getBitmap();
+		imageView.setImageDrawable(null);
+		recycle(b, 'recycledImageView');
+	}
+ 
+
+	//刷新ImageView 用于图片地址不变 ，图片内容变更
+	public void reloadImageVIew(ImageView imageView, Bitmap newBitmap,
+			String url) {
+		SoftReference&lt;Bitmap&gt; reference = mBitmapRefCache.get(url);
+		Bitmap oldBitmap = null;
+		if (reference != null)
+			oldBitmap = reference.get();
+		mBitmapRefCache.put(url, new SoftReference&lt;Bitmap&gt;(newBitmap));// 刷新内存信息
+		for (Entry&lt;ImageView, String&gt; entry : mImageViewUrlMap.entrySet()) {
+			if (entry.getValue().equals(url)) {
+				// 刷新当前Bitmap
+				entry.getKey().setImageBitmap(newBitmap);
+			}
+		}
+		recycle(oldBitmap, 'reloadImageVIew');// 回收旧的bitmap
+		mImageViewUrlMap.put(imageView, url);
+		imageView.setImageBitmap(newBitmap);
+	}
+
+	public static void recycle(Bitmap b, String src) {
+		if (b != null &amp;&amp; !b.isRecycled()) {
+			Log.v(TAG, 'recycle by ' + src + ',the bitmap:' + b);
+			b.recycle();
+		}
+	}
+
+}
+</pre><p>对应回收策略和其进行的操作如下&nbsp;</p><table border="0" style="WORD-BREAK: break-all; WORD-WRAP: break-word" class="table table-bordered table-condensed table-hover"><tbody><tr><td>&nbsp;activityManger管理activity时 增加当前activity到map中的时候 回收掉当前activity之前n个的activity对应的所以位图 n是可以配置的如果想要保留2个activity则n=3<br></td><td>&nbsp;recycleBitmapOnPause回收当前activity所有的位图 并给对应的imageView设置默认的图片<br></td></tr><tr><td>&nbsp;当activity被销毁时 activityManager 从map中删除当前的activity 当前activity对应的所有的位图回收<br></td><td>&nbsp;recycleAllBitmapOnDestroy 操作同上<br></td></tr><tr><td>&nbsp;activity 的increate方法中将此activity加入activityManager管理的map中 初始化当前activity对应imageManager<br></td><td>&nbsp;getInstance 从缓存中加载 如果没有初始化一个imageManager并将对应关系放入activity和imageManager对应关系的map中<br></td></tr><tr><td>&nbsp;activity 的回到前台的时候 onResume 方法中重新加载该activity对应的所有位图<br></td><td>&nbsp;reloadBitmapOnResume 将当前avtivity缓存的imageview对应的url都加载到对应的imageView中<br></td></tr></tbody></table><p>&nbsp;</p><h1>&nbsp;&nbsp;<b style="font-family:tahoma, Arial;">2 如何在图片管理中加入本地图片的支持 以及如何处理大尺寸图片</b></h1><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">&nbsp; 本地图片的加载和远程url的图片加载有2个问题 1 ：尺寸的不定性，不能确定你要加载的图片的大小，不像url这种你可以根据服务端的支持来活的适合的分辨率的图片 2：缓存的问题 ImageManager中到目前位置都是把url和对应的位图来做对应的而且imageView也是和url的关系对应的。就需要1 把本地文件的完整路径做为url来使用 2 根据原图和目标imageView的大小来进行压缩处理</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;"><span style="font-size:14px;">&nbsp; 处理方式是进行尺寸的缩放，</span>BitmapFactory的<span style="font-size:14px;">decodeStream</span>方法加载的时候先进行尺寸的判断，获取到尺寸之后，根据图像真实的尺寸和要转换成的尺寸，设置缩放的比例再进行编码转换成图像。同样通过url转换成本地存储文件名的规则转换成本地文件之后重新存储成要转换的尺寸。 这样把本地的完整文件目录转换成本地存储文件名之后。</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">&nbsp; 详细看下<span style="font-size:14px;">BitmapFactory</span></p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;"><span style="font-size:14px;"></span><img src="./bitmap_files/t_1521445223.png" alt="alt" style="height: auto; vertical-align: middle; margin: 10px; font-size: 14px; cursor: pointer;"></p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">这些方法都是将本地目录 inputstream 或者是静态资源转换成bitmap的方法。其中Options可以指定对应的选项，</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">&nbsp;</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">1、inPreferredConfig 指定decode到内存中，手机中所采用的编码，可选值定义在Bitmap.Config中。缺省值是ARGB_8888。</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">2、inJustDecodeBounds 如果设置为true并不会真的返回bitmap，而是会根据图像的实际大小填充outWidth和outHeigth的值</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">3、inSampleSize 设置decode时的缩放比例，一般是根据实际大小和需要转换成的大小比来决定，需要注意的是如果实际大小比需要转换的还要小，那么这个值是1.</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);line-height:20px;font-size:14px;">利用Options的这些值就可以高效的得到一幅缩略图。</p><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);font-size:14px;line-height:20px;">&nbsp;</p><pre style="padding:9.5px;font-family:tahoma, Arial;">public static void saveLocalImgsToCacheDir(String fileOriginPathOrURL,) {
+          String newFilePath = null;//经过md5之后转换成本地存储的文件名
+          Options opts = null;//decode方法的内容
+          FileOutputStream out = null;
+          File file = null;
+         //转换文件名 HEAD是存放本地缓存文件的目录
+               filePath =HEAD+EncryptUtil.md5Hex(fileOriginPathOrURL) ;
+               file = new File(filePath);
+               if (file.exists()) {// 如果已经缓存过，则不执行
+                    continue;
+               }
+               opts = new Options();
+               //参数表示是否只是计算大小 并将大小放在outWidth和outHeigth中
+               opts.inJustDecodeBounds = true;
+               BitmapFactory.decodeFile(src, opts);
+               //判断如果大小比当前屏幕大则指定缩放比例 如果比当前屏幕小则保留1 不缩放
+               opts.inSampleSize = Math.max(1, opts.outWidth
+                         / Constant.SCREEN_WIDTH);
+               try {
+                   //重新设置只计算大小为false 实际decode文件
+                    opts.inJustDecodeBounds = false;
+                    Bitmap bitmap = BitmapFactory.decodeFile(src, opts);
+                    if (bitmap != null) {
+                         out = new FileOutputStream(file);
+                         //转换成jpg
+                         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
+                    }
+               } catch (Throwable tr) {
+                    Log.e(TAG, 'saveLocalImgToCacheDir error:', tr);
+
+               } finally {
+                    file = null;
+                    filePath = null;
+                    opts = null;
+                    FileUtil.clostOutputStream(out);
+               }
+ 
+     }   </pre><p style="margin-top:5px;margin-bottom:5px;color:rgb(102,102,102);font-size:14px;line-height:20px;">需要注意的是，把本地的图像的完成路径做为url来使用进行文件名转换，存储等的时候在步骤1中对url进行文件名尺寸替换这一步要排除掉。即:</p><pre style="padding:9.5px;font-family:tahoma, Arial;">// 重设url，增加尺寸支持 来自网络的图片才需要增加尺寸 本地的url即本地的文件的完整路径名可以定义file://为文件的头部，而来自网络的一般是http开头从而区别开了
+if (picSize != null &amp;&amp; !isLocalUrl(url)) {
+    url = url + picSize;
+}</pre><p>&nbsp;</p></div>
+            
+
+<div class="row-fluid"><span class="ft-12">分  类：</span> <a class="label label-important" href="http://www.atatech.org/article/11">移动开发与客户端</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="ft-12">标  签：</span>     <a class="label label-info article-tag" href="http://www.atatech.org/search?type=article&keyword=%E6%97%A0%E7%BA%BF">无线</a>
+        <a class="label label-info article-tag" href="http://www.atatech.org/search?type=article&keyword=%E5%AE%A2%E6%88%B7%E7%AB%AF">客户端</a>
+        <a class="label label-info article-tag" href="http://www.atatech.org/search?type=article&keyword=android">android</a>
+    </div>
+
+<div class="row-fluid">
+    </div>
+
+<div class="ft-12 dashed-border-box mt-10 row-fluid">
+    <div class="btn-group fr">  <a href="javascript:;" class="btn" id="tuijian"><span>分享(<span class="count">0</span>)</span></a>
+            <a href="http://www.atatech.org/article/store/6644/0?token=172a44a1b77c8f579a3fa5efceacf6eb" style="display:none;" class="store cancelStore btn">取消收藏(<span class="count">1</span>)</a>
+  <a href="http://www.atatech.org/article/store/6644/1?token=172a44a1b77c8f579a3fa5efceacf6eb" style="" class="store btn">收藏(<span class="count">1</span>)</a>
+  <a href="http://www.atatech.org/article/up/6644?token=172a44a1b77c8f579a3fa5efceacf6eb" class="zan btn">赞(<span class="count">0</span>)</a>
+</div>
+        
+
+                    <div style="" id="settop" class="add-essence btn">推荐</div>
+          <div style="display:none;" id="cancletop" class="cancle-essence btn">取消推荐</div>
+                    <span id="istop" class="btn" u="/gprofile/istop/122/6644?type=1&amp;istop=1">置顶</span>
+          <span id="isremove" class="btn" url="/gprofile/removeart/122/6644">移出本圈</span>
+                    
+      </div>
+      
+            <div class="ft-12 mt-20 mb-10 row-fluid" id="wypl">
+                <span class="fr" style="display:none;">
+                    <i class="comment-gray-icon">&nbsp;</i>评论
+
+                </span>
+                                <strong class="comment-title"><span class="btn ft-12 wypl btn-warning">我要评论</span> </strong>
+                <span class="fr"><strong>共有<span class="ft-red" id="countNum">0</span>条评论</strong></span>
+            </div>
+
+            <div class="comment-list row-fluid mb-10">
+                <ul id="comment-box">
+                            </ul>
+    </div>
+            <div class="row-fluid">
+        <table>
+            <tbody><tr><td>
+                <div>
+                    <form id="replea" action="http://www.atatech.org/article/replay" method="post" onsubmit="return false;">
+                        <!--    <p class="fm-titile" id="edit-box"> <a class="ml-10" id="mark-edit" href="javascript:;">MarkDown</a><a id="html-edit" class="ml-10 ft-org" href="javascript:;">富文本</a></p> -->  
+                        <div id="edit-show-box">
+                            <div id="html-edit-box" class="ks-editor ks-editor-shown" style="width: 785px; height: 400px;" aria-disabled="false"><div class="ks-editor-tools"><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="源码" tabindex="0" hidefocus="true"><span class="ks-editor-toolbar-item ks-editor-toolbar-sourceArea"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="插入代码" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-code"></span></div><span class="ks-editor-toolbar-separator">&nbsp;</span><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="粗体 " tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-bold"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="斜体 " tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-italic"></span></div><div class="ks-editor-select ks-editor-menu-button ks-editor-button ks-editor-select-shown ks-editor-menu-button-shown ks-editor-button-shown" role="button" aria-haspopup="true" style="width: 70px;" aria-expanded="false" tabindex="0" hidefocus="true" aria-disabled="false"><div class="ks-editor-menu-button-caption">大小</div><div class="ks-editor-menu-button-dropdown"><div class="ks-editor-menu-button-dropdown-inner"></div></div></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="删除线 " tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-strikeThrough"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="下划线 " tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-underline"></span></div><span class="ks-editor-toolbar-separator">&nbsp;</span><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="插入图片" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-image"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="插入链接" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-link"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-toolbar-foreColorBtn ks-editor-button-shown" role="button" style="" title="设置文本颜色" tabindex="0" hidefocus="true" aria-disabled="false"><div class="ks-editor-toolbar-item ks-editor-toolbar-foreColor"></div><div style="background-color:rgb(204, 0, 0)" class="ks-editor-toolbar-color-indicator"></div></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-toolbar-foreColorArrowBtn ks-editor-button-shown" role="button" style="" title="选择并设置文本颜色" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-foreColorArrow"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown ks-editor-button-disabled" role="button" style="" aria-disabled="true" tabindex="-1" title="撤销" hidefocus="true"><span class="ks-editor-toolbar-item ks-editor-toolbar-undo"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown ks-editor-button-disabled" role="button" style="" aria-disabled="true" tabindex="-1" title="重做" hidefocus="true"><span class="ks-editor-toolbar-item ks-editor-toolbar-redo"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="清除格式" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-removeFormat"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="左对齐" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-justifyLeft"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="居中对齐" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-justifyCenter"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="右对齐" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-justifyRight"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="插入表格" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-table"></span></div><div class="ks-editor-button ks-editor-toolbar-button ks-editor-button-shown" role="button" style="" title="批量插图" tabindex="0" hidefocus="true" aria-disabled="false"><span class="ks-editor-toolbar-item ks-editor-toolbar-multipleUpload"></span></div></div><div class="ks-editor-textarea-wrap" style="height: 343px;"><iframe style="width:100%;height:100%;border:none;" frameborder="0" title="kissy-editor" allowtransparency="true"></iframe><textarea class="ks-editor-textarea edits" style="width: 100%; height: 343px; display: none;" topic="评论前，请先激活你的ATA哦！" name="originalContent" id="content"></textarea></div><div class="ks-editor-status" style="line-height: 20px;"><span style="margin: 0px 5px;">提示:评论支持@哦，被@者会及时收到邮件&amp;站内提醒，与后面内容用空格隔开</span></div></div>
+                            <textarea class="hide" name="content" id="hiddenContent"></textarea>
+                            <div id="mark-edit-box" style="display:none;">
+                                <div id="post-editor" class="post-editor">  
+                                    <div class="wmd-container">
+                                        <div id="wmd-button-bar" class="wmd-button-bar"></div>
+                                        <textarea id="wmd-input" topic="评论前，请先激活你的ATA哦！" class="wmd-input wid-675" name="post-text" cols="92" rows="15" tabindex="101"></textarea>
+                                    </div>
+                                    
+                                    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+                                    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+                                    
+                                    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+                                    
+                                    <div id="wmd-preview" class="wmd-preview" style="display:none;"></div>
+                                    <div class="edit-block">
+                                        
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <input type="hidden" name="article_id" value="6644">
+                        <input type="hidden" name="group_id" value="122">
+                        <input type="hidden" name="token" value="1083bb29016b7d2704c7f2fe38f43905">
+                        <p class="layerout-box">
+                            <span class="fr mt-10">
+                                <button type="button" id="submitBtn" class="btn btn-primary">提交评论</button>
+                            </span>
+                            
+                        </p>
+                    </form>
+                </div>
+                
+            </td></tr></tbody></table>
+
+        </div>
+            </div> <!-- end span8 -->
+
+
+    <div class="span3">
+              <div class="user-msg">
+        <a class="user-pic" href="http://www.atatech.org/gprofile/122"><img src="./bitmap_files/u_avatar_20120831130113_group_122_32.jpeg"></a>
+        <div class="msg-content">
+            <h2 class="title1" style="line-height:20px"><a class="link ft-gray" href="http://www.atatech.org/gprofile/122" title="HackInMobile"><strong>HackInMobile</strong></a></h2>
+            <p class=" ft-12"><i class="class-icon" title="分类">&nbsp;</i><a class="ft-gray  text-noline link" href="http://www.atatech.org/group/list/11">移动开发与客户端</a> <i class="attention-icon ml-10" title="关注">&nbsp;</i>&nbsp;9</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+            <div class="circle-tab ft-14 small-title mt-20"><strong>相关文章推荐</strong></div>
+    <div class="new-answer-list">
+        <ul>
+                                        <li><a class="link" href="http://www.atatech.org/article/detail/5124/11">AZus框架的前身－湖...</a><span class="fr ft-gray ft-12">34人读过</span></li>
+                                <li><a class="link" href="http://www.atatech.org/article/detail/5941/11">淘宝Android主客户端...</a><span class="fr ft-gray ft-12">71人读过</span></li>
+                                <li><a class="link" href="http://www.atatech.org/article/detail/3017/11">无线客户端安全服务（...</a><span class="fr ft-gray ft-12">149人读过</span></li>
+                                <li><a class="link" href="http://www.atatech.org/article/detail/980/11">关于淘宝客户端应用框...</a><span class="fr ft-gray ft-12">291人读过</span></li>
+                                <li><a class="link" href="http://www.atatech.org/article/detail/3595/11">对于无线新战略的一点...</a><span class="fr ft-gray ft-12">175人读过</span></li>
+                                <li><a class="link" href="http://www.atatech.org/article/detail/6232/11">苹果应用审查团队叫停...</a><span class="fr ft-gray ft-12">30人读过</span></li>
+                            </ul>
+        </div>
+                        <div class="circle-tab ft-14 small-title mt-20"><strong>作者的其它文章</strong></div>
+        <div class="new-answer-list">
+            <ul>
+                                                    <li><a class="link" href="http://www.atatech.org/article/detail/6755/122" title="java服务端快速开发框架playFrameWork学习 1">java服务端快速开发框...</a><span class="fr ft-gray ft-12">2人读过</span></li>
+                                        <li><a class="link" href="http://www.atatech.org/article/detail/6642/122" title="淘伴客户端接入pushCenter资料整理">淘伴客户端接入pushC...</a><span class="fr ft-gray ft-12">16人读过</span></li>
+                                        <li><a class="link" href="http://www.atatech.org/article/detail/3065/0" title="【转贴】使用LLVM自动添加@synthesize功能">【转贴】使用LLVM...</a><span class="fr ft-gray ft-12">1人读过</span></li>
+                                        <li><a class="link" href="http://www.atatech.org/article/detail/2755/122" title="iPhone/Mac Objective-C内存管理教程和原理剖析  【转载】">iPhone/Mac Object...</a><span class="fr ft-gray ft-12">12人读过</span></li>
+                                        <li><a class="link" href="http://www.atatech.org/article/detail/2175/122" title="Centos下新建用户 和">Centos下新建用户 和</a><span class="fr ft-gray ft-12">1人读过</span></li>
+                                                        </ul>
+            </div>
+                    </div>
+    </div>
+</div>
+<input name="article_id" class="hide" value="6644" style="display:none">
+<div id="myModal" class="modal hide fade">
+  <form action="http://www.atatech.org/article/modify/6644" method="post">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h3>修改标签</h3>
+    </div>
+    <div class="modal-body">
+
+      <input type="text" name="modify_tag" id="modify_tag" value="无线 客户端 android ">
+      <input type="hidden" id="class_id" name="class_id" value="11">
+      <input type="hidden" id="modify" name="modify" value="1">
+      </div>
+    <div class="modal-footer">
+      <a href="http://www.atatech.org/article/detail/6644/0#" class="btn" data-dismiss="modal">关闭</a>
+      <span class="btn btn-primary save_tag">保存更改</span>
+    </div>
+  </form>
+</div>
+
+<div id="checkRepeat" class="modal hide fade">
+  <form action="http://www.atatech.org/article/modify/6644" method="post">
+    <div class="modal-header">
+      <a class="close closecheck" data-dismiss="modal">×</a>
+      <h3>@重名检查</h3>
+    </div>
+    <div class="modal-body">
+        <div class="repeat-text"></div>
+        <div class="alert checktishi">橙色标识的童鞋有重名，您要@的是哪位童鞋呢？请选择，点击NEXT检查下一个</div>
+        <div class="repeat-name"></div>
+      </div>
+    <div class="modal-footer">
+      <a href="http://www.atatech.org/article/detail/6644/0#" class="btn closecheck" data-dismiss="modal">关闭</a>
+      <span class="btn btn-primary next" nid="1">NEXT</span>
+    </div>
+  </form>
+</div>
+
+<div class="hide J-wash-area"></div>
+<input type="hidden" id="is-mark" value="0">
+<textarea class="hide" id="wmd-content"></textarea>
+<script type="text/javascript" src="./bitmap_files/Markdown.Converter.js"></script>
+<script type="text/javascript" src="./bitmap_files/Markdown.Editor.js"></script>
+<script type="text/javascript" src="./bitmap_files/showdown.js"></script>
+<script type="text/javascript" src="./bitmap_files/brush.js"></script>
+<script type="text/javascript" src="./bitmap_files/draft.js"></script>
+<script type="text/javascript" src="./bitmap_files/kissy-min.js" data-config="{combine:true,comboMaxUrlLength:1500}"></script>
+<script type="text/javascript" src="./bitmap_files/mark.js"></script>
+<script type="text/javascript" src="./bitmap_files/stub.js"></script>
+<script type="text/javascript" src="./bitmap_files/reply_editor.js"></script>
+<script type="text/javascript" src="./bitmap_files/flexpaper.js"></script>
+<script type="text/javascript" src="./bitmap_files/flexpaper_handlers.js"></script>
+
+<script type="text/javascript">
+window.onload = function() { 
+    var replay_id = null;
+    if (replay_id != null) {
+        jQuery("html,body").animate({scrollTop:$("#com"+replay_id).offset().top-170},300);
+    };
+}
+
+$(function(){
+    
+    var fileSize = $("#downFileSize");
+    if(fileSize.html() != "" && !isNaN(fileSize.html())) {
+        fileSize.html(formatFileSize(fileSize.html()));
+    }
+    
+    $("table[border=1]").attr("border", 0).addClass("table table-bordered table-condensed table-hover");
+
+  
+
+    function formatFileSize(bytes) {
+        bytes = Number(bytes);
+        
+        if (typeof bytes !== 'number') {
+            return '';
+        }
+        if (bytes >= 1000000000) {
+            return (bytes / 1000000000).toFixed(2) + ' GB';
+        }
+        if (bytes >= 1000000) {
+            return (bytes / 1000000).toFixed(2) + ' MB';
+        }
+        return (bytes / 1000).toFixed(2) + ' KB';
+    }
+
+    $("#selUser").Selector({ dropListUrl:"https://is.alibaba-inc.com/jscontrol/js/suser?jsoncallback=?", cache:true, ifRepeat:true});
+
+    if ($("#is-mark").val() == 1) {
+        var MdConverter = new Showdown.converter();
+        var mdHtml = MdConverter.makeReadHtml($("#wmd-content").val());
+        $(".md-editor-post").html(mdHtml);
+    }
+
+        //$("div.detail-content").find("a").attr("target","_blank"); 
+    //  $("#floatmsgbox").css("top",$("#wypl").offset().top+30);
+       //$("#floatmsgbox").css("left",$("#wypl").offset().left+$("#wypl").width()+20);
+       $(".wypl").click(function(){
+        jQuery("html,body").animate({scrollTop:$('#replea').offset().top},300);
+    });
+
+       $(".more_group").live('click',function(){
+        $(".quote-right-contents").show();
+        $(".more_group").hide();
+    })
+       
+       page.scrollTop(true);
+       var repeat = null;
+       var msg = null;
+       var ckarr = new Array();
+       var tmpck = new Array();
+       var content = null;
+       var com_id = null;
+       var rid = null;
+       page.commentFunction("replea","",function(data){
+        repeat = data.msg.repeat;
+        msg = data.msg;
+        content = data.msg.data;
+        if (repeat != null) {
+            $('#checkRepeat').modal({
+                backdrop:"static",
+                keyboard:false,
+                show:true
+            });
+            if (repeat.length == 1) {
+              $(".checktishi").html("橙色标识的童鞋有重名，您要@的是哪位童鞋呢？");
+              $(".next").html("完成");
+              $(".next").addClass("finish");
+              $(".next").removeClass('next');
+            };
+            $(".next").attr('allnum',repeat.length);
+            var html = "";
+
+            if (repeat[0]['noone']==1) {
+              $(".checktishi").html("查无此人哦！是不是要回去<a href='#' class='closecheck' data-dismiss='modal' >修改</a>呢？");
+            };
+            for (var i in repeat[0]){
+              if(i == 'name' || i == 'noone'){break}
+              html += "<label class='radio'><input name='repeatname' type='radio' value='"+repeat[0][i]['id']+"' mail='"+repeat[0][i]['mail']+"'>"+ repeat[0][i]['nickname']+"&nbsp;<span class='ft-12 ft-gray'>|&nbsp;"+repeat[0][i]['position']+"&nbsp;|&nbsp;"+repeat[0][i]['department']+"</span></label>";
+            }
+            $(".repeat-name").html(html);
+            $(".repeat-text").html(data.msg.data.replace(repeat[0]['name'],"<span style='background:#ff7f26;color: white;'>"+repeat[0]['name']+"</span>")+"<br>");
+        }else{
+            var urlA = location.href.split('?');
+            var url = urlA[0]+'#inputInit';
+            var tmpUrl = window.location.hash;
+            if ( tmpUrl == '#inputInit' || tmpUrl == "" ) {
+                window.location.hash = '#inputInit';
+                location.reload();return;
+            };
+            location.href = url;
+        };
+        return false;
+    });
+       //$(".delete").click(page.delQaConfirm);
+       $(".next").live('click',function(){
+        var checkedname = $("input:radio[name=repeatname]:checked");
+        nid = $(this).attr('nid');
+        if (!checkedname.val() && repeat[nid-1]['noone']!=1) {
+          page.msg('请选择一个童鞋！','error');
+          return false;
+        };
+        if (repeat[nid]['noone']==1) {
+          $(".checktishi").html("查无此人哦！是不是要回去<a href='#' class='closecheck' data-dismiss='modal' >修改</a>呢？");
+        }else{
+          $(".checktishi").html("橙色标识的童鞋有重名，您要@的是哪位童鞋呢？请选择，点击NEXT检查下一个");
+        };
+        allnum = $(this).attr('allnum');
+
+        var html = "";
+        for (var i in repeat[nid]){
+          if(i == 'name' || i == 'noone'){break}
+          html += "<label class='radio'><input name='repeatname' type='radio' value='"+repeat[nid][i]['id']+"' mail='"+repeat[nid][i]['mail']+"'>"+ repeat[nid][i]['nickname']+"&nbsp;<span class='ft-12 ft-gray'>|&nbsp;"+repeat[nid][i]['position']+"&nbsp;|&nbsp;"+repeat[nid][i]['department']+"</span></label>";
+        }
+        $(".repeat-name").html(html);
+        msg.data = msg.data.replace(repeat[nid-1]['name'],repeat[nid-1]['name'].substr(0,1)+"<span></span>"+repeat[nid-1]['name'].substr(1));
+        $(".repeat-text").html(msg.data.replace(repeat[nid]['name'],"<span style='background:#ff7f26;color: white;'>"+repeat[nid]['name']+"</span>"));
+        $(this).attr('nid',nid*1+1);
+        if (nid*1+1 == allnum) {
+          $(".checktishi").html("橙色标识的童鞋有重名，您要@的是哪位童鞋呢？");
+          $(".next").html("完成");
+          $(".next").addClass("finish");
+          $(".next").removeClass('next');
+        };
+        nid = nid*1-1;
+        
+        // tmpck['name'] = repeat[nid]['name'];
+        // tmpck['id'] = checkedname.val();
+        // tmpck['mail'] = checkedname.attr('mail');
+          if (repeat[nid]['noone']!=1) {
+          content = content.replace(repeat[nid]['name'],"<a href='/profile/"+checkedname.val()+"' style='color:#0099FF'>"+repeat[nid]['name']+"</a>");
+          ckarr.push(repeat[nid]['name']+"|"+checkedname.val()+"|"+checkedname.attr('mail'));
+        }
+       });
+
+        //完成@检查
+       $(".finish").live("click",function(){
+          var checkedname = $("input:radio[name=repeatname]:checked");
+          nid = $(this).attr('nid')*1-1;
+          if (!checkedname.val() && repeat[nid]['noone']!=1) {
+            page.msg('请选择一个童鞋！','error');
+            return false;
+          };
+          var editflag = $("input[name=editflag]").val();
+          if (!editflag) {editflag = 0};
+          if (repeat[nid]['noone']!=1) {
+          content = content.replace(repeat[nid]['name'],"<a href='/profile/"+checkedname.val()+"' style='color:#0099FF'>"+repeat[nid]['name']+"</a>");
+          ckarr.push(repeat[nid]['name']+"|"+checkedname.val()+"|"+checkedname.attr('mail'));
+        }
+        if (rid != null ) {editflag = rid};
+        if (ckarr.length == 0) {ckarr = 0};
+          $.post("/article/replay",{'checked[]':ckarr,article_id:6644,group_id:122,editflag:editflag,content:content,com_id:com_id,time:msg.time},function(msg){
+            msg = eval("("+msg+")");
+
+              if (msg.state) {
+                page.msg("评论成功！",'ok',function(){
+                    var urlA = location.href.split('?');
+                    var url = urlA[0]+'#inputInit';
+                    var tmpUrl = window.location.hash;
+                    if ( tmpUrl == '#inputInit' || tmpUrl == "" ) {
+                        window.location.hash = '#inputInit';
+                        location.reload();return;
+                    };
+                    location.href = url;
+                    //location.reload();return;
+                });
+              }else{
+                page.msg(msg.msg,'error');
+              }
+            });
+       })
+
+        //二级回复
+       $(".Secondary").live('click',function(){
+        var obj = this;
+        var box = $(obj).parent().parent().attr('id');
+        var txt = $(obj).parent().find("textarea").val();
+        var article_id = $("input[name='article_id']").val();
+        var group_id = $("input[name='group_id']").val();
+        com_id = $(obj).attr('com_id');
+        var uid = $(obj).attr('uid');
+        var token = $("input[name='token']").val();
+        rid = $(obj).attr('rid');
+        $.post("/article/replay",{content:txt,article_id:article_id,group_id:group_id,com_id:com_id,token:token,uid:uid,editflag:rid},function(json){
+          var data=eval("("+json+")");
+         if(data.state){
+            repeat = data.msg.repeat;
+            msg = data.msg;
+            content = data.msg.data;
+            if (repeat != null) {
+                $('#checkRepeat').modal({
+                    backdrop:"static",
+                    keyboard:false,
+                    show:true
+                });
+                if (repeat.length == 1) {
+                  $(".checktishi").html("橙色标识的童鞋有重名，您要@的是哪位童鞋呢？");
+                  $(".next").html("完成");
+                  $(".next").addClass("finish");
+                  $(".next").removeClass('next');
+                };
+                $(".next").attr('allnum',repeat.length);
+                var html = "<div class='controls'>";
+            if (repeat[0]['noone']==1) {
+              $(".checktishi").html("查无此人哦！是不是要回去<a href='#' class='closecheck' data-dismiss='modal' >修改</a>呢？");
+            };
+                for (var i in repeat[0]){
+                  if(i == 'name' || i == 'noone'){break}
+                  html += "<label class='radio'><input name='repeatname' type='radio' value='"+repeat[0][i]['id']+"' mail='"+repeat[0][i]['mail']+"'>"+ repeat[0][i]['nickname']+"&nbsp;|&nbsp;"+repeat[0][i]['position']+"&nbsp;|&nbsp;"+repeat[0][i]['department']+"</label>";
+                }
+                html += "</div>"
+               // html += "<label class='radio'><input type='radio' name='optionsRadios' id='optionsRadios1' value='option1 checked=''>sssssssssssssssssss</label></ul>";
+                $(".repeat-name").html(html);
+                $(".repeat-text").html(data.msg.data.replace(repeat[0]['name'],"<span style='background:#ff7f26;'>"+repeat[0]['name']+"</span>")+"<br>");
+            }else{
+              location.reload();return;
+            };
+            return false;
+         }else{
+            page.msg(data.msg[0],data.msg[1]);
+           //page.msg(data.msg,'error');
+         }
+         buttonObj.attr("disabled",false);
+
+             $("#" + box).prepend(html);
+             $(obj).parent().remove();
+        }),"json";
+       });
+
+       $("a.zan").click(page.qaUp);
+       $("a.cai").click(page.qaDown);
+       $("#tuijian").click(function(){
+        var tags = "";
+        $(".article-tag").each(function(){
+            tags = tags + " "+$(this).html()
+        })
+        $("#tags").val(tags)
+        page.pobBox({loadFunction:function(obj){
+            obj.find("form").keydown(function(event){
+                if(event.keyCode == 13){
+                    return false;
+                }
+            });
+        },okCallBack:function(obj){
+            var tagObj = $("#tags");
+            var tagStat = page.cheachTag(tagObj);
+            var buttonObj = obj.find("button");
+            if(tagStat==false||tagStat==-1){
+              if(tagStat==false){
+                            tagObj.focus();
+                            page.msg('每个标签不能超过10个字符！','error');
+                            return false;
+                        }
+                        if(tagStat == -1){
+                            tagObj.focus();
+                            page.msg('标签个数不能超过3个！','error');
+                            return false;
+                        }
+                    }
+                    buttonObj.attr("disabled",true);
+                    $.ajax({
+                        url:$(obj).find("form").attr("action"),
+                        dataType: 'json',
+                        type:'POST',
+                        data:$(obj).find("form").serialize(),
+                        error: function () {
+                            buttonObj.attr("disabled",true);
+                            page.msg("系统超时，请稍后重试！",'error');
+                        },
+                        success: function(data) {
+                            if($.trim(data)!=''){
+                                if(data){
+                                    if(data.state){
+                                        page.msg("保存成功！",'ok',function(){
+                                            obj.find("input").val('');
+                                            obj.find("select").val('0');
+                                            obj.hide();
+                                            $("#tuijian .count").html($("#tuijian .count").html()*1+1);
+                                            location.reload();return;
+                                            $(".selected").attr('checked',false);
+                                            buttonObj.attr("disabled",false);
+                                        });
+                                        //location.href = data.msg;
+                                    }else{
+                                        buttonObj.attr("disabled",false);
+                                        //alert(data.msg[0]);
+                                        page.msg(data.msg,"error");
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+}});
+});
+
+$("a.delete").click(page.delQaConfirm);
+$('#isremove').click(function(){
+        if(confirm('确定移出该文章?')){
+            var url = $(this).attr('url');
+            $.post(
+                url,
+                '',
+                function(data){
+                    if(data.state == false){
+                        alert(data.msg);   
+                    }
+                    else{
+                        alert(data.msg); 
+                        window.location.href = window.location.href;
+                    }
+                },
+                'json'
+            );
+        }
+        });
+
+        //源码高量
+        
+        if($("div.detail-content,div.com-list-content").find("pre").length>0){
+            SyntaxHighlighter.defaults["toolbar"] = false;
+            $("div.detail-content,div.com-list-content").find("pre").each(function(){
+                var html = SyntaxHighlighter.highlight(this,null,true);
+                if(html&&typeof html == "string"){
+                    var obj = $(html).get(0);
+                    this.parentNode.replaceChild(obj,this);
+                }
+            });
+        }
+
+        //图片新窗口打开
+        if($("div.detail-content,div.com-list-content").find("img").length>0){
+            $("div.detail-content,div.com-list-content").find("img").css("cursor", "pointer").click(function(){
+                window.open(this.src.replace("/t_","/"));               
+            });
+        }
+        
+        //表格自动换行
+        if($("div.detail-content").find("table").length>0){
+            $("div.detail-content").find("table").attr("style","WORD-BREAK: break-all; WORD-WRAP: break-word");
+        }  
+
+        //收藏
+        $(".store").click(function(obj){
+           // alert(obj.target)
+           $.get(obj.target,function(data){
+            data = eval("("+data+")");
+            if (data.msg == "true") {
+                $(".cancelStore .count").html($(".cancelStore .count").html()*1+1)
+                $(".store").hide()
+                $(".cancelStore").show()
+                page.msg("收藏成功！");
+            }else{
+                if (data.state==0) {
+                    page.msg(data.msg[0],data.msg[1]);
+                    return false;
+                };
+                $(".store .count").html($(".store .count").html()*1-1)
+                $(".store").show()
+                $(".cancelStore").hide()
+                page.msg("取消成功！");
+            }
+        }) 
+           return false
+
+       });
+        
+        //精华设置
+        $('#settop').click(function(){
+            var article_id = '6644';
+            var operate = 'settop';
+            $.post(
+                '/article/settop',
+                {operate:operate,id:article_id},
+                function(data){
+                    if(data.state == false)
+                    {
+                        alert(data.msg);   
+                    }
+                    else
+                    {
+                        $('#settop').hide();
+                        $("#cancletop").show();
+                        window.location.href = window.location.href;
+                    }
+                },
+                'json'
+                );
+        });
+        
+        $('#cancletop').click(function(){
+            var article_id = '6644';
+            var operate = 'cancletop';
+            $.post(
+                '/article/settop',
+                {operate:operate,id:article_id},
+                function(data){
+                    if(data.state == false)
+                    {
+                        alert(data.msg);   
+                    }
+                    else
+                    {
+                       $('#settop').show();
+                       $('#cancletop').hide();
+                       
+                       window.location.href = window.location.href;
+                   }
+               },
+               'json'
+               );
+        });
+        
+        $('#istop').click(function(){
+            var url = $('#istop').attr("u");
+            $.post(
+                url,
+                '',
+                function(data){
+                    if(data.state == false){
+                        alert(data.msg);   
+                    }
+                    else{
+                        u = url.substring(0, url.length-1);
+                        v = url.substring(url.length-1, url.length);
+                        if(v == 1){
+                            $('#istop').text('取消置顶');
+                            $('#istop').attr('u', u+'0');
+                        }else{
+                            $('#istop').text('置顶');
+                            $('#istop').attr('u', u+'1');
+                        }                                                
+                        //window.location.href = window.location.href;
+                    }
+                },
+                'json'
+            );
+        });
+
+        $("#submitBtn").click(function (ev) {
+            $("#hiddenContent").val(editObj.get("data"));
+            $("#replea").submit();
+        });
+
+    });
+
+$('.mini-card').popover('hide')
+var cards = [];
+    $('.mini-card').mouseover(function(e){
+        if (checkhover(e,this)) {
+            obj = $(this);
+            userId = $(this).attr('user_id');
+            workId = $(this).attr('work_id');
+            if(cards[userId] == undefined){
+                content = $(this).attr('data-content');
+
+                $.ajax({
+                type: "POST",
+                async:false,
+                url: '/common/usercard',
+                data:{user_id: userId,work_id: workId},
+                dataType: "json",
+                success:function(data) {
+                cards[userId] = content.replace("<img src='/images/loading_large.gif' />", "<div class='statistics-msg'><span class='first-noline fl'><a class='text-noline' href='/profile/group/"+userId+"/0'><em class='ft-org'>"+data.data.group_num+"</em></a><br><em class='ft-gray'>圈子</em></span><span class='fl'><a class='text-noline' href='/profile/article/"+userId+"/0'><em class='ft-org'>"+data.data.art_num+"</em></a><br><em class='ft-gray'>文章</em></span><span><a class='text-noline' href='/profile/qa/"+userId+"/0'><em class='ft-org'>"+data.data.qa_num+"</em></a><br><em class='ft-gray'>提问</em></span><span><a class='text-noline' href='/profile/qa/"+userId+"/0'><em class='ft-org'>"+data.data.replay_num+"</em></a><br><em class='ft-gray'>回答</em></span></div>");
+                    obj.attr('data-content', cards[userId]);
+                    }
+                });
+                
+            }
+            else{
+                obj.attr('data-content', cards[userId]);
+            }
+            $(this).popover('show');
+        };
+
+    })
+
+$('.closecheck').live('click',function(){
+    $(".finish").html("NEXT");
+    $(".finish").addClass('next');
+    $(".next").removeClass("finish");
+    $(".next").attr('nid',1);
+    $(".checktishi").html("橙色标识的童鞋有重名，您要@的是哪位童鞋呢？请选择，点击NEXT检查下一个");
+    $("#submitBtn").removeAttr('disabled');
+});
+
+$('.mini-card').mouseout(function(e){
+    if (checkhover(e,this)) {
+        $(this).popover('hide')
+    };
+
+}); 
+$(".set_tag").click(function(){
+  $('#myModal').modal({
+    backdrop:"static",
+    keyboard:false,
+    show:true
+});
+})
+
+$(".save_tag").click(function(){
+
+  var tagObj = $("#modify_tag");
+  var tagStat = page.cheachTag(tagObj);
+  //var buttonObj = obj.find("button");
+  if(tagStat==false||tagStat==-1){
+    if(tagStat==-1){
+      tagObj.focus();
+      page.msg('每个标签不能超过10个字符！','error');
+      return false;
+    }
+    if(tagStat == false){
+        tagObj.focus();
+        page.msg('标签个数不能超过3个！','error');
+        return false;
+    }
+  }
+  $.ajax({
+      url:$(this).closest("form").attr("action"),
+      dataType: 'json',
+      type:'POST',
+      data:$(this).closest("form").serialize(),
+      error: function () {
+          $(this).closest("span").attr("disabled",true);
+          page.msg("系统超时，请稍后重试！",'error');
+      },
+      success: function(data) {
+          if($.trim(data)!=''){
+              if(data){
+                  if(data.state){
+                      page.msg("保存成功！",'ok',function(){
+                          location.reload();return;
+                      });
+                      //location.href = data.msg;
+                  }else{
+                      page.msg(data.msg,'error');
+                      $(this).closest("span").attr("disabled",false);
+                  }
+              }
+          }
+      }
+  });
+})
+
+</script>
+
+<!-- mincontent:end 
+<div class="fixed"><a target="_blank" href="http://www.atatech.org/special/bigdata" ><img src="/images/special_logo.png" /></a>
+        </div>-->
+        <style type="text/css">
+        .fixed
+        {
+            position: fixed;
+            _position: absolute;
+            bottom: 10px;
+            right: 0px;
+            width: 200px;
+            height: 100px;
+            text-align: center;
+        }
+    </style>
+<!-- footer:start -->
+<div class="footer ft-12">
+		<div class="mb-10 ft-black">阿里巴巴技术协会（Alibaba Technology Association）,简称ATA，是由阿里巴巴集团发起，致力于为全集团7000余名工程师创造一个自主、开放的线上、线下技术交流平台，让技术无界！</div>
+        <a class="no-hover" target="_self" href="javascript:void(0)">阿里巴巴集团</a>
+        <b>|</b>
+        <a class="no-hover" style="color:#b0b0b0" target="_self" href="javascript:void(0)">阿里巴巴网络：</a>
+        <a href="http://www.alibaba.com/">国际站</a>
+        <a href="http://china.alibaba.com/">中文站</a>
+        <a href="http://seller.aliexpress.com/">全球速卖通</a>
+        <b>|</b>
+        <a href="http://www.taobao.com/?id=shouye_taobao">淘宝网</a>
+        <b>|</b>
+        <a href="http://www.tmall.com/">天猫</a>
+        <b>|</b>
+        <a href="http://www.etao.com/">一淘</a>
+        <b>|</b>
+        <a href="http://www.aliyun.com/">阿里云</a>
+        <b>|</b>
+        <a href="http://www.yahoo.com.cn/">中国雅虎</a>
+        <b>|</b>
+        <a href="http://www.alipay.com/">支付宝</a>
+        <div>© 2013 淘宝(中国)软件有限公司 版权所有</div>
+</div>
+<!-- footer:end -->
+<!-- pob-box:start -->
+<div class="pob-box" id="conFirmBox" style="display:none;">
+    <div class="pb-title"><a href="javascript:;" class="pb-close">&nbsp;</a>提示信息</div>
+    <div class="pob-content">
+        <div class="min-content">
+            <div class="pt-20"> 您确定要删除吗？</div>
+        </div>
+        <p class="layerout-box">
+            <span class="fr mt-20 mb-10">
+                <button type="button" okbutton="1" class="btn btn-warning">确 定</button>
+                <button type="button" close="1" class="btn">取 消</button>
+            </span>
+        </p>
+    </div>
+</div>
+
+<div class="pob-box" id="invent_share" style="display:none;">
+    <div class="pb-title"><a href="javascript:;" class="pb-close">&nbsp;</a>提示信息</div>
+    <div class="pob-content">
+        <div class="min-content">
+            <div class="pt-20"> 你确定邀请TA来分享吗？</div>
+        </div>
+        <p class="layerout-box">
+            <span class="fr mt-20 mb-10">
+                <button type="button" okbutton="1" class="btn btn-warning">确 定</button>
+                <button type="button" close="1" class="btn">取 消</button>
+            </span>
+        </p>
+    </div>
+</div>
+
+<div class="pob-box" id="topic-activation" style="display:none;">
+    <div class="pb-title"><a href="javascript:;" class="pb-close">&nbsp;</a>温馨提示</div>
+    <div class="pob-content">
+        <div class="min-content">
+            <div class="pt-20"> 您是游客，无法进行此操作，请先去我的ATA补充资料！激活我的ATA！
+</div>
+        </div>
+        <p class="layerout-box">
+            <span class="fr mt-20 mb-10">
+                <button type="button" okbutton="1" class="btn btn-warning"><em><span>去激活</span></em></button>
+                <button type="button" close="1" class="btn ml-10"><em><span>关闭</span></em></button>
+            </span>
+        </p>
+    </div>
+</div>
+<!-- pob-box:end -->
+<!--[if IE 6]><script src="/js/png-min.js" type="text/javascript"></script><script type="text/javascript">(function(){DD_belatedPNG.fix(".tab-left,.tab-right,.header .search-box,.search-button,.blog-list li .close-span,.blog-icon,.orag-button span,.orag-button em,.gray-button span,.gray-button em,.whight-button span,.whight-button em,.anwser-icon,.upload-button,.red-button span,.radius-button span,.bg-avter,.error-msg,.ok-msg,.class-icon,.attention-icon,.people-icon,.back-button,.extension-icon,.collect-icon,.delete-member,.update-member,.add-member,.update-icon,.span-button,.span-button span,.float-icon,.radius-bg-left,.radius-bg-right,.add-icon,.blog-big-icon,.anwser-big-icon,.li-comment-top-icon,.management-button,.blog-gray-icon,.answer-gray-icon,.date-gray-icon,.topic-gray-icon,.saima-gray-icon,.comment-gray-icon,.read-gray-icon,.zan-icon,.cai-gray-icon,.answer-gray-icon,.circle-manger,.circle-gz,.circle-add-gz,.text-member,.text-invt,.text-gz,.text-add-gz,.text-cacle,.group-gray-icon,.link-gray-icon,.flush-icon,.hot-icon,.more-icon,.new-answer-icon,.home-list .bg-avter,.creat-circlem-button,.come-circlem-button,.new-blog-list .blog-list li,.activation-button,.org-more-icon,.ata-icon,.pob-box .pb-close");})();</script><![endif]-->
+<!-- 请把脚本放到 body 元素内 -->
+<script type="text/javascript" async="async">
+(function() {
+    // 判断Host解析模式
+    var uvHost = 'https:' == document.location.protocol ? 'https://' : 'http://';
+    var uvConfig = {
+        //bindId: 'bindId', //自定义部件容器,需自己提供例如:<div id="bindId"></div>
+        popWidth: 975,
+        popHeight: 388,
+        closeButtonImage: 'http://wfstatic.taobao.org/resources/uservoice/images/close.png',
+        floatImage: 'http://wfstatic.taobao.org/resources/uservoice/skins/01.png',
+        floatPosition: 'right:auto',
+        useClient: '89d5c010-b09c-43e3-95c0-3d8286fb1bcc'
+    };
+    // 创建插件脚本
+    var uv = document.createElement('script');uv.type = 'text/javascript';uv.async = true;
+    uv.src = uvHost + 'wfstatic.taobao.org/resources/uservoice/js/feedback.plug.js';
+    var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv, s);
+    uv.onreadystatechange = uv.onload = function(){try{Feedback.config(uvConfig).run();}catch(E){}};
+})();
+/*$(function(){
+	$(window).resize(page.registrationf);
+	$(window).scroll(page.registrationf);
+	page.registrationf();
+});*/
+</script>
+
+<script type="text/javascript" src="./bitmap_files/tongji.js"></script><img src="./bitmap_files/tongji.do" border="0" width="1" height="1"><a href="http://tongji.linezing.com/report.html?unit_id=2951307" target="_blank"><img src="./bitmap_files/stats.gif" border="0" alt="量子统计"></a>
+<noscript>&lt;a href="http://www.linezing.com"&gt;&lt;img src="http://img.tongji.linezing.com/2951307/tongji.gif"/&gt;&lt;/a&gt;</noscript>
+<!--<a href="http://www.diaochapai.com/survey628379" target="_blank" id="registration" class="registration" ></a>
+-->
+</div><embed id="xunlei_com_thunder_helper_plugin_d462f475-c18e-46be-bd10-327458d045bd" type="application/thunder_download_plugin" height="0" width="0"></body><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px; background-color: rgb(0, 0, 0); opacity: 0.5; z-index: 996; display: none; background-position: initial initial; background-repeat: initial initial;"></div><div style="right: 0px; position: fixed; top: 150px; z-index: 999;"><div style="cursor: pointer;"><img src="./bitmap_files/01.png"></div></div><div style="width: 975px; height: 388px; border: 1px solid rgb(197, 197, 197); background-image: url(http://wfstatic.taobao.org/resources/uservoice/images/loading_big.gif); background-color: rgb(240, 240, 240); position: absolute; top: 191px; left: 208px; overflow: hidden; display: none; z-index: 998; background-position: 50% 50%; background-repeat: no-repeat no-repeat;"><span style="position: absolute; top: 5px; right: 5px; cursor: pointer;"><img src="./bitmap_files/close.png"></span></div></html>
